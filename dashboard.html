@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        form { max-width: 400px; margin: auto; text-align: left; }
+        input, textarea { width: 100%; padding: 10px; margin: 5px 0; }
+        button { width: 100%; padding: 10px; background: blue; color: white; border: none; }
+    </style>
+</head>
+<body>
+    <h2>Resume Form</h2>
+    <form id="resumeForm">
+        <input type="text" id="fullname" placeholder="Full Name" required><br>
+        <input type="text" id="email" placeholder="Email" required><br>
+        <input type="text" id="phone" placeholder="Phone Number" required><br>
+        <textarea id="skills" placeholder="Skills" required></textarea><br>
+        <textarea id="experience" placeholder="Experience" required></textarea><br>
+        <button type="submit">Save & Generate Resume</button>
+    </form>
+
+    <script>
+        document.getElementById("resumeForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            let resumeData = {
+                fullname: document.getElementById("fullname").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("phone").value,
+                skills: document.getElementById("skills").value,
+                experience: document.getElementById("experience").value
+            };
+            localStorage.setItem("resumeData", JSON.stringify(resumeData));
+            alert("Resume Data Saved!");
+            window.location.href = "resume.html";
+        });
+    </script>
+</body>
+</html>
